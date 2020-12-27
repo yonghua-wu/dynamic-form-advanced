@@ -1,0 +1,1097 @@
+{
+  "groupsDefine": [
+    {
+      "index": "1",
+      "names": {
+        "zh-CN": "南向",
+        "zh-CHT": "南向",
+        "en-US": "South Bound"
+      }
+    },
+    {
+      "index": "2",
+      "names": {
+        "zh-CN": "北向",
+        "zh-CHT": "北向",
+        "en-US": "North Bound"
+      }
+    }
+  ],
+  "formDefine": [
+    {
+      "label": {
+        "zh-CN": "协议/厂家",
+        "zh-CHT": "協議/廠家",
+        "en-US": "Protocol/Manufacturer"
+      },
+      "formType": "select",
+      "required": true,
+      "field": "device.type",
+      "group": "1",
+      "options": [
+        {
+          "label": "Modbus",
+          "value": "Modbus",
+          "children": [
+            {
+              "label": {
+                "zh-CN": "北向接口",
+                "zh-CHT": "北向接口",
+                "en-US": "North bound"
+              },
+              "formType": "select",
+              "required": true,
+              "field": "usePatterns.type",
+              "group": "2",
+              "options": [
+                {
+                  "label": {
+                    "zh-CN": "阿里云",
+                    "zh-CHT": "阿里雲",
+                    "en-US": "Aliyun"
+                  },
+                  "value": "Aliyun",
+                  "children": [
+                    {
+                      "label": {
+                        "zh-CN": "上传周期(s)",
+                        "zh-CHT": "上傳周期(s)",
+                        "en-US": "Upload cycle(s)"
+                      },
+                      "formType": "input",
+                      "type": "number",
+                      "default": "1",
+                      "required": true,
+                      "field": "usePatterns.uploadPeriod",
+                      "group": "2"
+                    },
+                    {
+                      "label": {
+                        "zh-CN": "Topic",
+                        "zh-CHT": "Topic",
+                        "en-US": "Topic"
+                      },
+                      "rule": "\/^((?!\\/))\/",
+                      "formType": "input",
+                      "type": "text",
+                      "default": "user/update",
+                      "required": true,
+                      "field": "usePatterns.topic",
+                      "group": "2"
+                    },
+                    {
+                      "label": {
+                        "zh-CN": "省流量模式 (?)",
+                        "zh-CHT": "省流量模式 (?)",
+                        "en-US": "Flow saving mode (?)"
+                      },
+                      "tips": {
+                        "zh-CN": "数据无变化不上传",
+                        "zh-CHT": "數據無變化不上傳",
+                        "en-US": "Data will not be uploaded without changes."
+                      },
+                      "formType": "select",
+                      "default": false,
+                      "required": true,
+                      "field": "usePatterns.flowSavingMode",
+                      "group": "2",
+                      "options": [
+                        {
+                          "label": {
+                            "zh-CN": "开启",
+                            "zh-CHT": "開啓",
+                            "en-US": "Enable"
+                          },
+                          "value": true
+                        },
+                        {
+                          "label": {
+                            "zh-CN": "关闭",
+                            "zh-CHT": "關閉",
+                            "en-US": "Disable"
+                          },
+                          "value": false
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "label": {
+                    "zh-CN": "DeviceOn",
+                    "zh-CHT": "DeviceOn",
+                    "en-US": "DeviceOn"
+                  },
+                  "value": "DeviceOn",
+                  "children": [
+                    {
+                      "label": {
+                        "zh-CN": "上传周期(s)",
+                        "zh-CHT": "上傳周期(s)",
+                        "en-US": "Upload cycle(s)"
+                      },
+                      "formType": "input",
+                      "type": "number",
+                      "default": "1",
+                      "required": true,
+                      "field": "usePatterns.uploadPeriod",
+                      "group": "2"
+                    },
+                    {
+                      "label": {
+                        "zh-CN": "省流量模式 (?)",
+                        "zh-CHT": "省流量模式 (?)",
+                        "en-US": "Flow saving mode (?)"
+                      },
+                      "tips": {
+                        "zh-CN": "数据无变化不上传",
+                        "zh-CHT": "數據無變化不上傳",
+                        "en-US": "Data will not be uploaded without changes."
+                      },
+                      "formType": "select",
+                      "required": true,
+                      "default": false,
+                      "field": "usePatterns.flowSavingMode",
+                      "group": "2",
+                      "options": [
+                        {
+                          "label": {
+                            "zh-CN": "开启",
+                            "zh-CHT": "開啓",
+                            "en-US": "Enable"
+                          },
+                          "value": true
+                        },
+                        {
+                          "label": {
+                            "zh-CN": "关闭",
+                            "zh-CHT": "關閉",
+                            "en-US": "Disable"
+                          },
+                          "value": false
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                    "label": {
+                      "zh-CN": "MQTT",
+                      "zh-CHT": "MQTT",
+                      "en-US": "MQTT"
+                    },
+                    "value": "MQTT_Connect",
+                    "children": [
+                      {
+                          "label": {
+                            "zh-CN": "Topic",
+                            "zh-CHT": "Topic",
+                            "en-US": "Topic"
+                          },
+                        "rule": "\/^((?!\\/))\/",
+                        "formType": "input",
+                        "type": "text",
+                        "default": "",
+                        "required": true,
+                        "field": "usePatterns.topic",
+                        "group": "2"
+                      },
+                      {
+                        "label": {
+                          "zh-CN": "上传周期(s)",
+                          "zh-CHT": "上傳周期(s)",
+                          "en-US": "Upload cycle(s)"
+                        },
+                        "formType": "input",
+                        "type": "number",
+                        "default": "1",
+                        "required": true,
+                        "field": "usePatterns.uploadPeriod",
+                        "group": "2"
+                      }
+                    ]
+                }
+              ]
+            },
+            {
+              "label": {
+                "zh-CN": "型号",
+                "zh-CHT": "型號",
+                "en-US": "Model"
+              },
+              "formType": "select",
+              "required": true,
+              "field": "device.model",
+              "group": "1",
+              "options": [
+                {
+                  "label": "RTU",
+                  "value": "RTU",
+                  "children": [
+                    {
+                      "label": {
+                        "zh-CN": "采集端口",
+                        "zh-CHT": "采集端口",
+                        "en-US": "Collection port"
+                      },
+                      "formType": "select",
+                      "required": true,
+                      "field": "device.port",
+                      "group": "1",
+                      "default": "ttyO3",
+                      "options": [
+                        {
+                          "label": "ttyO3",
+                          "value": "ttyO3"
+                        },
+                        {
+                          "label": "ttyO4",
+                          "value": "ttyO4"
+                        }
+                      ]
+                    },
+                    {
+                      "label": {
+                        "zh-CN": "波特率",
+                        "zh-CHT": "波特率",
+                        "en-US": "Baud rate"
+                      },
+                      "formType": "select",
+                      "required": true,
+                      "field": "device.baudrate",
+                      "group": "1",
+                      "default": "19200",
+                      "options": [
+                        {
+                          "label": "300",
+                          "value": "300"
+                        },
+                        {
+                          "label": "600",
+                          "value": "600"
+                        },
+                        {
+                          "label": "1200",
+                          "value": "1200"
+                        },
+                        {
+                          "label": "2400",
+                          "value": "2400"
+                        },
+                        {
+                          "label": "4800",
+                          "value": "4800"
+                        },
+                        {
+                          "label": "9600",
+                          "value": "9600"
+                        },
+                        {
+                          "label": "19200",
+                          "value": "19200"
+                        },
+                        {
+                          "label": "38400",
+                          "value": "38400"
+                        },
+                        {
+                          "label": "57600",
+                          "value": "57600"
+                        },
+                        {
+                          "label": "115200",
+                          "value": "115200"
+                        }
+                      ]
+                    },
+                    {
+                      "label": {
+                        "zh-CN": "数据位",
+                        "zh-CHT": "數據位",
+                        "en-US": "Data bits"
+                      },
+                      "formType": "select",
+                      "required": true,
+                      "field": "device.dataBits",
+                      "group": "1",
+                      "default": "8",
+                      "options": [
+                        {
+                          "label": "7",
+                          "value": "7"
+                        },
+                        {
+                          "label": "8",
+                          "value": "8"
+                        }
+                      ]
+                    },
+                    {
+                      "label": {
+                        "zh-CN": "校验位",
+                        "zh-CHT": "校驗位",
+                        "en-US": "Check bits"
+                      },
+                      "formType": "select",
+                      "required": true,
+                      "field": "device.parity",
+                      "group": "1",
+                      "default": "None",
+                      "options": [
+                        {
+                          "label": "Odd",
+                          "value": "Odd"
+                        },
+                        {
+                          "label": "Even",
+                          "value": "Even"
+                        },
+                        {
+                          "label": "None",
+                          "value": "None"
+                        }
+                      ]
+                    },
+                    {
+                      "label": {
+                        "zh-CN": "停止位",
+                        "zh-CHT": "停止位",
+                        "en-US": "Stop bits"
+                      },
+                      "formType": "select",
+                      "required": true,
+                      "field": "device.stopBits",
+                      "group": "1",
+                      "default": "1",
+                      "options": [
+                        {
+                          "label": "1",
+                          "value": "1"
+                        },
+                        {
+                          "label": "2",
+                          "value": "2"
+                        }
+                      ]
+                    },
+                    {
+                      "label": {
+                        "zh-CN": "采集周期(s)",
+                        "zh-CHT": "采集周期(s)",
+                        "en-US": "Collection cycle (s)"
+                      },
+                      "formType": "input",
+                      "type": "number",
+                      "required": true,
+                      "field": "device.samplePeriod",
+                      "group": "1",
+                      "default": "1"
+                    }
+                  ]
+                },
+                {
+                  "label": "TCP",
+                  "value": "TCP",
+                  "children": [
+                    {
+                      "label": "IP",
+                      "formType": "input",
+                      "required": true,
+                      "rule": "ip",
+                      "field": "device.networkIP",
+                      "group": "1"
+                    },
+                    {
+                      "label": {
+                        "zh-CN": "端口",
+                        "zh-CHT": "端口",
+                        "en-US": "Port"
+                      },
+                      "formType": "input",
+                      "required": true,
+                      "rule": "port",
+                      "field": "device.networkPort",
+                      "group": "1"
+                    },
+                    {
+                      "label": {
+                        "zh-CN": "采集周期(s)",
+                        "zh-CHT": "采集周期(s)",
+                        "en-US": "Collection cycle (s)"
+                      },
+                      "formType": "input",
+                      "type": "number",
+                      "required": true,
+                      "field": "device.samplePeriod",
+                      "group": "1",
+                      "default": "1"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Mitsubishi",
+          "value": "Mitsubishi",
+          "children": [
+            {
+              "label": {
+                "zh-CN": "北向接口",
+                "zh-CHT": "北向接口",
+                "en-US": "North bound"
+              },
+              "formType": "select",
+              "required": true,
+              "field": "usePatterns.type",
+              "group": "2",
+              "options": [
+                {
+                  "label": {
+                    "zh-CN": "阿里云",
+                    "zh-CHT": "阿里雲",
+                    "en-US": "Aliyun"
+                  },
+                  "value": "Aliyun",
+                  "children": [
+                    {
+                      "label": {
+                        "zh-CN": "上传周期(s)",
+                        "zh-CHT": "上傳周期(s)",
+                        "en-US": "Upload cycle(s)"
+                      },
+                      "formType": "input",
+                      "type": "number",
+                      "required": true,
+                      "default": "1",
+                      "field": "usePatterns.uploadPeriod",
+                      "group": "2"
+                    },
+                    {
+                      "label": {
+                        "zh-CN": "Topic",
+                        "zh-CHT": "Topic",
+                        "en-US": "Topic"
+                      },
+                      "rule": "\/^((?!\\/))\/",
+                      "formType": "input",
+                      "type": "text",
+                      "default": "user/update",
+                      "required": true,
+                      "field": "usePatterns.topic",
+                      "group": "2"
+                    },
+                    {
+                      "label": {
+                        "zh-CN": "省流量模式 (?)",
+                        "zh-CHT": "省流量模式 (?)",
+                        "en-US": "Flow saving mode (?)"
+                      },
+                      "tips": {
+                        "zh-CN": "数据无变化不上传",
+                        "zh-CHT": "數據無變化不上傳",
+                        "en-US": "Data will not be uploaded without changes."
+                      },
+                      "formType": "select",
+                      "type": "number",
+                      "required": true,
+                      "default": false,
+                      "field": "usePatterns.flowSavingMode",
+                      "group": "2",
+                      "options": [
+                        {
+                          "label": {
+                            "zh-CN": "开启",
+                            "zh-CHT": "開啓",
+                            "en-US": "Enable"
+                          },
+                          "value": true
+                        },
+                        {
+                          "label": {
+                            "zh-CN": "关闭",
+                            "zh-CHT": "關閉",
+                            "en-US": "Disable"
+                          },
+                          "value": false
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "label": {
+                    "zh-CN": "DeviceOn",
+                    "zh-CHT": "DeviceOn",
+                    "en-US": "DeviceOn"
+                  },
+                  "value": "DeviceOn",
+                  "children": [
+                    {
+                      "label": {
+                        "zh-CN": "上传周期(s)",
+                        "zh-CHT": "上傳周期(s)",
+                        "en-US": "Upload cycle(s)"
+                      },
+                      "formType": "input",
+                      "type": "number",
+                      "default": "1",
+                      "required": true,
+                      "field": "usePatterns.uploadPeriod",
+                      "group": "2"
+                    },
+                    {
+                      "label": {
+                        "zh-CN": "省流量模式 (?)",
+                        "zh-CHT": "省流量模式 (?)",
+                        "en-US": "Flow saving mode (?)"
+                      },
+                      "tips": {
+                        "zh-CN": "数据无变化不上传",
+                        "zh-CHT": "數據無變化不上傳",
+                        "en-US": "Data will not be uploaded without changes."
+                      },
+                      "formType": "select",
+                      "required": true,
+                      "default": false,
+                      "field": "usePatterns.flowSavingMode",
+                      "group": "2",
+                      "options": [
+                        {
+                          "label": {
+                            "zh-CN": "开启",
+                            "zh-CHT": "開啓",
+                            "en-US": "Enable"
+                          },
+                          "value": true
+                        },
+                        {
+                          "label": {
+                            "zh-CN": "关闭",
+                            "zh-CHT": "關閉",
+                            "en-US": "Disable"
+                          },
+                          "value": false
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "label": {
+                    "zh-CN": "Modbus_RTU Server",
+                    "zh-CHT": "Modbus_RTU Server",
+                    "en-US": "Modbus_RTU Server"
+                  },
+                  "value": "Modbus_RTU"
+                },
+                {
+                  "label": {
+                    "zh-CN": "Modbus_TCP Server",
+                    "zh-CHT": "Modbus_TCP Server",
+                    "en-US": "Modbus_TCP Server"
+                  },
+                  "value": "Modbus_TCP"
+                },
+                {
+                  "label": {
+                    "zh-CN": "OPC_UA Server",
+                    "zh-CHT": "OPC_UA Server",
+                    "en-US": "OPC_UA Server"
+                  },
+                  "value": "OPC_UA"
+                }
+              ]
+            },
+            {
+              "label": {
+                "zh-CN": "型号",
+                "zh-CHT": "型號",
+                "en-US": "Model"
+              },
+              "formType": "select",
+              "required": true,
+              "field": "device.model",
+              "group": "1",
+              "default": "QnUCPU-Binary",
+              "options": [
+                {
+                  "label": "QnUCPU-Binary",
+                  "value": "QnUCPU-Binary"
+                }
+              ]
+            },
+            {
+              "label": "IP",
+              "formType": "input",
+              "rule": "ip",
+              "required": true,
+              "field": "device.networkIP",
+              "group": "1"
+            },
+            {
+              "label": {
+                "zh-CN": "端口",
+                "zh-CHT": "端口",
+                "en-US": "Port"
+              },
+              "formType": "input",
+              "type": "number",
+              "rule": "port",
+              "required": true,
+              "field": "device.networkPort",
+              "group": "1"
+            }
+          ]
+        },
+        {
+          "label": "SIEMENS",
+          "value": "SIEMENS",
+          "children": [
+            {
+              "label": {
+                "zh-CN": "北向接口",
+                "zh-CHT": "北向接口",
+                "en-US": "North bound"
+              },
+              "formType": "select",
+              "required": true,
+              "field": "usePatterns.type",
+              "group": "2",
+              "options": [
+                {
+                  "label": {
+                    "zh-CN": "阿里云",
+                    "zh-CHT": "阿里雲",
+                    "en-US": "Aliyun"
+                  },
+                  "value": "Aliyun",
+                  "children": [
+                    {
+                      "label": {
+                        "zh-CN": "上传周期(s)",
+                        "zh-CHT": "上傳周期(s)",
+                        "en-US": "Upload cycle(s)"
+                      },
+                      "formType": "input",
+                      "type": "number",
+                      "default": "1",
+                      "required": true,
+                      "field": "usePatterns.uploadPeriod",
+                      "group": "2"
+                    },
+                    {
+                      "label": {
+                        "zh-CN": "Topic",
+                        "zh-CHT": "Topic",
+                        "en-US": "Topic"
+                      },
+                      "rule": "\/^((?!\\/))\/",
+                      "formType": "input",
+                      "type": "text",
+                      "default": "user/update",
+                      "required": true,
+                      "field": "usePatterns.topic",
+                      "group": "2"
+                    },
+                    {
+                      "label": {
+                        "zh-CN": "省流量模式 (?)",
+                        "zh-CHT": "省流量模式 (?)",
+                        "en-US": "Flow saving mode (?)"
+                      },
+                      "tips": {
+                        "zh-CN": "数据无变化不上传",
+                        "zh-CHT": "數據無變化不上傳",
+                        "en-US": "Data will not be uploaded without changes."
+                      },
+                      "formType": "select",
+                      "type": "number",
+                      "required": true,
+                      "default": false,
+                      "field": "usePatterns.flowSavingMode",
+                      "group": "2",
+                      "options": [
+                        {
+                          "label": {
+                            "zh-CN": "开启",
+                            "zh-CHT": "開啓",
+                            "en-US": "Enable"
+                          },
+                          "value": true
+                        },
+                        {
+                          "label": {
+                            "zh-CN": "关闭",
+                            "zh-CHT": "關閉",
+                            "en-US": "Disable"
+                          },
+                          "value": false
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "label": {
+                    "zh-CN": "DeviceOn",
+                    "zh-CHT": "DeviceOn",
+                    "en-US": "DeviceOn"
+                  },
+                  "value": "DeviceOn",
+                  "children": [
+                    {
+                      "label": {
+                        "zh-CN": "上传周期(s)",
+                        "zh-CHT": "上傳周期(s)",
+                        "en-US": "Upload cycle(s)"
+                      },
+                      "formType": "input",
+                      "type": "number",
+                      "default": "1",
+                      "required": true,
+                      "field": "usePatterns.uploadPeriod",
+                      "group": "2"
+                    },
+                    {
+                      "label": {
+                        "zh-CN": "省流量模式 (?)",
+                        "zh-CHT": "省流量模式 (?)",
+                        "en-US": "Flow saving mode (?)"
+                      },
+                      "tips": {
+                        "zh-CN": "数据无变化不上传",
+                        "zh-CHT": "數據無變化不上傳",
+                        "en-US": "Data will not be uploaded without changes."
+                      },
+                      "formType": "select",
+                      "required": true,
+                      "default": false,
+                      "field": "usePatterns.flowSavingMode",
+                      "group": "2",
+                      "options": [
+                        {
+                          "label": {
+                            "zh-CN": "开启",
+                            "zh-CHT": "開啓",
+                            "en-US": "Enable"
+                          },
+                          "value": true
+                        },
+                        {
+                          "label": {
+                            "zh-CN": "关闭",
+                            "zh-CHT": "關閉",
+                            "en-US": "Disable"
+                          },
+                          "value": false
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "label": {
+                    "zh-CN": "Modbus_RTU Server",
+                    "zh-CHT": "Modbus_RTU Server",
+                    "en-US": "Modbus_RTU Server"
+                  },
+                  "value": "Modbus_RTU"
+                },
+                {
+                  "label": {
+                    "zh-CN": "Modbus_TCP Server",
+                    "zh-CHT": "Modbus_TCP Server",
+                    "en-US": "Modbus_TCP Server"
+                  },
+                  "value": "Modbus_TCP"
+                },
+                {
+                  "label": {
+                    "zh-CN": "OPC_UA Server",
+                    "zh-CHT": "OPC_UA Server",
+                    "en-US": "OPC_UA Server"
+                  },
+                  "value": "OPC_UA"
+                }
+              ]
+            },
+            {
+              "label": {
+                "zh-CN": "型号",
+                "zh-CHT": "型號",
+                "en-US": "Model"
+              },
+              "formType": "select",
+              "required": true,
+              "field": "device.model",
+              "group": "1",
+              "default": "S1200",
+              "options": [
+                {
+                  "label": "S200",
+                  "value": "S200"
+                },
+                {
+                  "label": "S300",
+                  "value": "S300"
+                },
+                {
+                  "label": "S400",
+                  "value": "S400"
+                },
+                {
+                  "label": "S1200",
+                  "value": "S1200"
+                },
+                {
+                  "label": "S1500",
+                  "value": "S1500"
+                }
+              ]
+            },
+            {
+              "label": "IP",
+              "formType": "input",
+              "rule": "ip",
+              "required": true,
+              "field": "device.networkIP",
+              "group": "1"
+            },
+            {
+              "label": {
+                "zh-CN": "端口",
+                "zh-CHT": "端口",
+                "en-US": "Port"
+              },
+              "formType": "input",
+              "type": "number",
+              "rule": "port",
+              "required": true,
+              "field": "device.networkPort",
+              "group": "1"
+            }
+          ]
+        },
+        {
+          "label": "Omron",
+          "value": "Omron",
+          "children": [
+            {
+              "label": {
+                "zh-CN": "北向接口",
+                "zh-CHT": "北向接口",
+                "en-US": "North bound"
+              },
+              "formType": "select",
+              "required": true,
+              "field": "usePatterns.type",
+              "group": "2",
+              "options": [
+                {
+                  "label": {
+                    "zh-CN": "阿里云",
+                    "zh-CHT": "阿里雲",
+                    "en-US": "Aliyun"
+                  },
+                  "value": "Aliyun",
+                  "children": [
+                    {
+                      "label": {
+                        "zh-CN": "上传周期(s)",
+                        "zh-CHT": "上傳周期(s)",
+                        "en-US": "Upload cycle(s)"
+                      },
+                      "formType": "input",
+                      "type": "number",
+                      "default": "1",
+                      "required": true,
+                      "field": "usePatterns.uploadPeriod",
+                      "group": "2"
+                    },
+                    {
+                      "label": {
+                        "zh-CN": "Topic",
+                        "zh-CHT": "Topic",
+                        "en-US": "Topic"
+                      },
+                      "rule": "\/^((?!\\/))\/",
+                      "formType": "input",
+                      "type": "text",
+                      "default": "user/update",
+                      "required": true,
+                      "field": "usePatterns.topic",
+                      "group": "2"
+                    },
+                    {
+                      "label": {
+                        "zh-CN": "省流量模式 (?)",
+                        "zh-CHT": "省流量模式 (?)",
+                        "en-US": "Flow saving mode (?)"
+                      },
+                      "tips": {
+                        "zh-CN": "数据无变化不上传",
+                        "zh-CHT": "數據無變化不上傳",
+                        "en-US": "Data will not be uploaded without changes."
+                      },
+                      "formType": "select",
+                      "type": "number",
+                      "default": false,
+                      "required": true,
+                      "field": "usePatterns.flowSavingMode",
+                      "group": "2",
+                      "options": [
+                        {
+                          "label": {
+                            "zh-CN": "开启",
+                            "zh-CHT": "開啓",
+                            "en-US": "Enable"
+                          },
+                          "value": true
+                        },
+                        {
+                          "label": {
+                            "zh-CN": "关闭",
+                            "zh-CHT": "關閉",
+                            "en-US": "Disable"
+                          },
+                          "value": false
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "label": {
+                    "zh-CN": "DeviceOn",
+                    "zh-CHT": "DeviceOn",
+                    "en-US": "DeviceOn"
+                  },
+                  "value": "DeviceOn",
+                  "children": [
+                    {
+                      "label": {
+                        "zh-CN": "上传周期(s)",
+                        "zh-CHT": "上傳周期(s)",
+                        "en-US": "Upload cycle(s)"
+                      },
+                      "formType": "input",
+                      "type": "number",
+                      "default": "1",
+                      "required": true,
+                      "field": "usePatterns.uploadPeriod",
+                      "group": "2"
+                    },
+                    {
+                      "label": {
+                        "zh-CN": "省流量模式 (?)",
+                        "zh-CHT": "省流量模式 (?)",
+                        "en-US": "Flow saving mode (?)"
+                      },
+                      "tips": {
+                        "zh-CN": "数据无变化不上传",
+                        "zh-CHT": "數據無變化不上傳",
+                        "en-US": "Data will not be uploaded without changes."
+                      },
+                      "formType": "select",
+                      "required": true,
+                      "default": false,
+                      "field": "usePatterns.flowSavingMode",
+                      "group": "2",
+                      "options": [
+                        {
+                          "label": {
+                            "zh-CN": "开启",
+                            "zh-CHT": "開啓",
+                            "en-US": "Enable"
+                          },
+                          "value": true
+                        },
+                        {
+                          "label": {
+                            "zh-CN": "关闭",
+                            "zh-CHT": "關閉",
+                            "en-US": "Disable"
+                          },
+                          "value": false
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "label": {
+                    "zh-CN": "Modbus_RTU Server",
+                    "zh-CHT": "Modbus_RTU Server",
+                    "en-US": "Modbus_RTU Server"
+                  },
+                  "value": "Modbus_RTU"
+                },
+                {
+                  "label": {
+                    "zh-CN": "Modbus_TCP Server",
+                    "zh-CHT": "Modbus_TCP Server",
+                    "en-US": "Modbus_TCP Server"
+                  },
+                  "value": "Modbus_TCP"
+                },
+                {
+                  "label": {
+                    "zh-CN": "OPC_UA Server",
+                    "zh-CHT": "OPC_UA Server",
+                    "en-US": "OPC_UA Server"
+                  },
+                  "value": "OPC_UA"
+                }
+              ]
+            },
+            {
+              "label": {
+                "zh-CN": "型号",
+                "zh-CHT": "型號",
+                "en-US": "Model"
+              },
+              "formType": "select",
+              "required": true,
+              "field": "device.model",
+              "group": "1",
+              "default": "CP-FINS",
+              "options": [
+                {
+                  "label": "CP-FINS",
+                  "value": "CP-FINS"
+                },
+                {
+                  "label": "CS-FINS",
+                  "value": "CS-FINS"
+                }
+              ]
+            },
+            {
+              "label": "IP",
+              "formType": "input",
+              "rule": "ip",
+              "required": true,
+              "field": "device.networkIP",
+              "group": "1"
+            },
+            {
+              "label": {
+                "zh-CN": "端口",
+                "zh-CHT": "端口",
+                "en-US": "Port"
+              },
+              "formType": "input",
+              "type": "number",
+              "rule": "port",
+              "required": true,
+              "field": "device.networkPort",
+              "group": "1"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

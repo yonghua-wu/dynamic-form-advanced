@@ -1,0 +1,112 @@
+{
+  "groups": [
+    {
+      "index": "1",
+      "names": "南向"
+    },
+    {
+      "index": "2",
+      "names": "北向"
+    }
+  ],
+  "formItemDefine": {
+    "deviceType": {
+      "label": "协议/厂家",
+      "formType": "checkbox",
+      "field": "device.type",
+      "attributes": {
+        "elFormItem": {
+          "required": true
+        }
+      },
+      "options": [
+        {
+          "label": "Modbus1",
+          "value": "Modbus1"
+        },
+        {
+          "label": "Modbus",
+          "value": "Modbus"
+        },
+        {
+          "label": "Mitsubishi",
+          "value": "Mitsubishi"
+        }
+      ]
+    },
+    "northBound": {
+      "label": "北向接口",
+      "formType": "select",
+      "field": "usePatterns.0.type",
+      "attributes": {
+        "elFormItem": {
+          "required": true
+        }
+      },
+      "options": [
+        {
+          "label": "阿里云",
+          "value": "Aliyun"
+        },
+        {
+          "label": "DeviceOn",
+          "value": "DeviceOn"
+        }
+      ]
+    },
+    "devicePort": {
+      "label": "采集端口",
+      "formType": "input-number",
+      "required": true,
+      "field": "device.port",
+      "attributes": {
+        "elFormItem": {
+          "required": true
+        }
+      }
+    },
+    "deviceDataBits": {
+      "label": "数据位",
+      "formType": "slider",
+      "required": true,
+      "field": "device.dataBits",
+      "attributes": {
+        "elFormItem": {
+          "required": true
+        }
+      }
+    }
+  },
+  "structureDefine": {
+    "deviceType": {
+      "group": "1",
+      "children": {
+        "Modbus": {
+          "northBound": {
+            "group": "2",
+            "children": {
+              "Aliyun": {
+                "devicePort": {
+                  "group": "1",
+                  "children": null
+                }
+              },
+              "DeviceOn": {
+                "deviceDataBits": {
+                  "group": "1",
+                  "children": null
+                }
+              }
+            }
+          }
+        },
+        "Mitsubishi": {
+          "deviceDataBits": {
+            "group": "1",
+            "children": null
+          }
+        }
+      }
+    }
+  }
+}
